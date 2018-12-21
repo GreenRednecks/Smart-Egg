@@ -1,3 +1,5 @@
+package Huehner;
+
 public abstract class Henne extends Huhn {
 
 
@@ -17,4 +19,6 @@ public abstract class Henne extends Huhn {
     public abstract double getFuttermengeKorn();
 
     public abstract double getFuttermengeLegemehl();
+
+
 }

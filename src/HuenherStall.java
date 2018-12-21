@@ -1,7 +1,13 @@
+import Huehner.Bielefelder;
+import Huehner.Hahn;
+import Huehner.Huhn;
+
 import java.util.ArrayList;
 
 public class HuenherStall {
 
+
+    private double aktuelleEierMenge = 0;
 
     public void getFuttermenge(ArrayList<Huhn> huehner){
         double mengeKorn = 0;
@@ -15,25 +21,43 @@ public class HuenherStall {
 
     }
 
+    public void getMaxEier(ArrayList<Huhn> huehner){
+        double maxEier = 0;
+        for (Huhn huhn: huehner){
+            maxEier += huhn.getMaxEier();
+        }
+
+        System.out.println("Maximale anz an eiern "+maxEier);
+    }
+
+
+    public double getEierMenge(){
+        return aktuelleEierMenge;
+    }
+
+    public void setAktuelleEierMenge(double menge){
+        //hier die eingabe vom terminal verarbeiten
+    }
 
 
               public static void main(String[] args){
                 HuenherStall huenerstall = new HuenherStall();
                 ArrayList huehner = new ArrayList<Huhn>();
+                Drucker drucker = new Drucker();
 
-                for (int i = 0; i < 30; i++){  //das muss aber variabel sein..
-                    huehner.add(new Bielefelder(1.5));
+                for (int i = 0; i < 30; i++){  //das ist nur zu testzwecken hier, wird später durch ein eingabe terminal ausgetauscht
+                    huehner.add(new Bielefelder());
                     huehner.add(new Hahn());
-                    huehner.add(new Bielefelder(1.2));
+                    huehner.add(new Bielefelder());
 
 
         }
 
         huenerstall.getFuttermenge(huehner);
+        huenerstall.getMaxEier(huehner);
+        System.out.println(drucker.getKassenbong());
 
-
-
-//        Huhn helga = new Henne(1.5);
+//        Huehner.Huhn helga = new Huehner.Henne(1.5);
 
     }
 

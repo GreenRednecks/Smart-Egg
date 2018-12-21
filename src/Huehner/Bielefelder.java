@@ -1,8 +1,10 @@
+package Huehner;
+
 public class Bielefelder extends Henne {
 
 
-    public Bielefelder(double legeleistung) {
-        super(legeleistung);
+    public Bielefelder() {
+        super(0.8);
     }
 
     public double getFuttermengeKorn(){
@@ -11,5 +13,11 @@ public class Bielefelder extends Henne {
     public double getFuttermengeLegemehl(){
         return 0.6; //600 gramm legemehl
     }
+
+    @Override
+    public double getMaxEier() {
+        return super.getLegeleistung();
+    }
+
 
 }

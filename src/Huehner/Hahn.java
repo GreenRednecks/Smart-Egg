@@ -1,3 +1,5 @@
+package Huehner;
+
 public class Hahn extends Huhn {
 
     public Hahn (){
@@ -14,6 +16,11 @@ public class Hahn extends Huhn {
 
     @Override
     public double getFuttermengeLegemehl() {
+        return 0;
+    }
+
+    @Override
+    public double getMaxEier() {
         return 0;
     }
 }

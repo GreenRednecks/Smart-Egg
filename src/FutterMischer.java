@@ -9,7 +9,7 @@ public class FutterMischer {
     }
 
     public void gibFutter(){
-
+// professor dr. pohl msr regelverhalten von legeleistung zu futtermenge
     }
 
 }
