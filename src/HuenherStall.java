@@ -40,24 +40,36 @@ public class HuenherStall {
     }
 
 
-              public static void main(String[] args){
-                HuenherStall huenerstall = new HuenherStall();
-                ArrayList huehner = new ArrayList<Huhn>();
-                Drucker drucker = new Drucker();
 
-                for (int i = 0; i < 30; i++){  //das ist nur zu testzwecken hier, wird später durch ein eingabe terminal ausgetauscht
+
+
+
+    public static void main(String[] args){
+        HuenherStall huenerstall = new HuenherStall();
+        ArrayList<Huhn> huehner = new ArrayList();
+        Lager lager = new Lager();
+//      Drucker drucker = new Drucker();
+
+        for (int i = 0; i < 30; i++){  //das ist nur zu testzwecken hier, wird später durch ein eingabe terminal ausgetauscht
                     huehner.add(new Bielefelder());
                     huehner.add(new Hahn());
                     huehner.add(new Bielefelder());
-
-
         }
 
-        huenerstall.getFuttermenge(huehner);
-        huenerstall.getMaxEier(huehner);
-        System.out.println(drucker.getKassenbong());
+        lager.addLeereKartons6(10);
+        lager.addLeereKartons10(10);
+        lager.add(13);
 
-//        Huehner.Huhn helga = new Huehner.Henne(1.5);
+        System.out.println("Noch " + lager.getAnzLeereKartons6()+ " 6er Kartons vorhanden");
+        System.out.println("Noch " + lager.getAnzLeereKartons10()+ " 10er Kartons vorhanden");
+        System.out.println(lager.getAnzVolleKartons()+ " volle Kartons sind im Lager");
+
+
+//        huenerstall.getFuttermenge(huehner);
+//        huenerstall.getMaxEier(huehner);
+//      System.out.println(drucker.getKassenbong());
+
+//      Huehner.Huhn helga = new Huehner.Henne(1.5);
 
     }
 

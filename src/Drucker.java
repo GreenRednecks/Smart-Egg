@@ -1,37 +1,29 @@
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+
 
 public class Drucker {
 
-    private Date aktuellesDatum;
-    private Calendar calender = Calendar.getInstance();
+    private Aufkleber aufkleber;
+
+    public void setAufkleber(Aufkleber aufkleber){
+        this.aufkleber = aufkleber;
+    }
+
+    public void print(int anz){   //hier muss die Anbindung an den echten Drucker rein, da etikett wird entsprechtend der anz mehrfach gedruckt
 
 
-
-    private Date haltbarkeitGekuehlt; //aktuelles Datum + 3 woche ungekuehlt 6 Wochen Gekuehlt
-    private Date haltbarkeitUnGekuehlt; //aktuelles Datum + 3 woche ungekuehlt 6 Wochen Gekuehlt
-
-    public String getKassenbong(){
-        aktuellesDatum = new Date();
-        calender.setTime(aktuellesDatum);
-        calender.add(Calendar.DAY_OF_YEAR, 21);
-        haltbarkeitUnGekuehlt = calender.getTime();
-        calender.add(Calendar.DAY_OF_YEAR, 21);
-        haltbarkeitGekuehlt = calender.getTime();
-
-        DateFormat formatter = new SimpleDateFormat( "dd.MM.yyyy HH:mm" );
-        String aktuellesDatumAlsString = formatter.format(aktuellesDatum);
-        String gekuehltDatumAlsString = formatter.format(haltbarkeitGekuehlt);
-        String unGekuehltDatumAlsString = formatter.format(haltbarkeitUnGekuehlt);
+        for (int i = 0; i < anz; i++){
+            System.out.println("--------------------------------------------------------------");
+            System.out.println(aufkleber.getDrucktext());
+            System.out.println("--------------------------------------------------------------");
+        }
 
 
+    }
 
-        return String.format("Dieser Karton wurde exklusiv von unseren Hühnern am %s gelegt\n " +
-                "und erfreut sich über einen Verbrauch, ungtekühlt bis zum %s.\n " +
-                "Wenn du die güte hast die Eier in den Kühlschrank zu lege, dann hast du bist zum %s Zeil.", aktuellesDatumAlsString, unGekuehltDatumAlsString,gekuehltDatumAlsString);
+    public void print(Aufkleber aufkleber){
+        System.out.println("--------------------------------------------------------------");
+        System.out.println(aufkleber.getDrucktext());
+        System.out.println("--------------------------------------------------------------");
     }
 
 }
