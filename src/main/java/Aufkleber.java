@@ -35,5 +35,8 @@ public class Aufkleber {
     public String getDrucktext() {
         return drucktext;
     }
+    public UUID getKartonID(){
+        return kartonID;
+    }
 }
 

@@ -102,8 +102,6 @@ public class Lager {
         }
 
 
-//        drucker.setAufkleber(aufkleber);        //etiketten drucken
-//        drucker.print(loopcounter+1);
 
 
         for (int i = lagerVolleKartons.size()-1; loopcounter >= 0; i--, loopcounter--){   //Etiketten ausdrucken
