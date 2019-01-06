@@ -22,10 +22,15 @@ public class Eierkarton {
 
     public void setEier(ArrayList<Ei> eier) {
         this.eier = eier;
+        createAufkleber();
     }
 
-    public void setAufkleber(Aufkleber aufkleber){
-        this.aufkleber = aufkleber;
+    private void createAufkleber(){
+        aufkleber = new Aufkleber(eier.get(0).getLegedatum(), eier.get(0).getHaltbarkeitUnGekuehlt(),eier.get(0).getHaltbarkeitGekuehlt(), this.id, this.eier.size(), anzahlEierplaetze);
+    }
+
+    public Aufkleber getAufkleber() {
+        return aufkleber;
     }
 
     public boolean removeOneEgg(){

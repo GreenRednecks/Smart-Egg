@@ -62,14 +62,11 @@ public class Lager {
         return eier;
     }
 
-    private Aufkleber createAufkleber(Ei ei){
-        return new Aufkleber(ei.getLegedatum(), ei.getHaltbarkeitUnGekuehlt(), ei.getHaltbarkeitGekuehlt());
-    }
+
 
 
     public void add(int anzEier){
         ArrayList<Ei> eier = createEggs(anzEier);
-        Aufkleber aufkleber = createAufkleber(eier.get(0));
 
         int loopcounter = 0;
         while (eier.size() > 0) {       //eier erstellen und in kartons einsortieren
@@ -109,10 +106,8 @@ public class Lager {
 //        drucker.print(loopcounter+1);
 
 
-        for (int i = lagerVolleKartons.size()-1; loopcounter >= 0; i--, loopcounter--){   //etiketten digital auf die kartons kleben
-            aufkleber.setKartonID(lagerVolleKartons.get(i).id);
-            lagerVolleKartons.get(i).setAufkleber(aufkleber);
-            drucker.print(aufkleber);
+        for (int i = lagerVolleKartons.size()-1; loopcounter >= 0; i--, loopcounter--){   //Etiketten ausdrucken
+            drucker.print(lagerVolleKartons.get(i).getAufkleber());
         }
 
 
