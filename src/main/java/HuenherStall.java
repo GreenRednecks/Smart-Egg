@@ -49,11 +49,15 @@ public class HuenherStall {
         ArrayList<Huhn> huehner = new ArrayList();
         Lager lager = new Lager();
         Drucker drucker = new Drucker();
+        KeyPad keypad = new KeyPad();
+
 
 
         lager.add(33);
 
         drucker.print(lager.getAufkleber().get(lager.getAufkleber().size()-1));
+
+        while (true);
 
 
         /*
