@@ -27,7 +27,7 @@ public class Drucker {
         System.out.println("--------------------------------------------------------------");
         System.out.println(aufkleber.getDrucktext());
         System.out.println("--------------------------------------------------------------");
-        generateQR(aufkleber);
+//        generateQR(aufkleber);
     }
 
     private void generateQR(Aufkleber aufkleber) {

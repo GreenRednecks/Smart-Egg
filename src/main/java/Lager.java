@@ -8,6 +8,7 @@ public class Lager {
     private ArrayList<Eierkarton> lagerVolleKartons; //an spätere Datenbankanbindung denken
     private ArrayList<Eierkarton> ausgelieferteKartons;
     private Drucker drucker = new Drucker();
+    private ArrayList<Aufkleber> aufkleber;
 
     public Lager() {
         //hier Datenbankobjekte einlesen danach
@@ -16,6 +17,7 @@ public class Lager {
         lagerLeereKartons6 = new ArrayList();
         lagerLeereKartons10 = new ArrayList();
         ausgelieferteKartons = new ArrayList();
+        aufkleber = new ArrayList();
 
     }
 
@@ -41,6 +43,7 @@ public class Lager {
     public int getAnzVolleKartons(){
         return lagerVolleKartons.size();
     }
+    public ArrayList<Aufkleber> getAufkleber(){return aufkleber;}
 
     private ArrayList<Ei> createEggs(int anz){
 
@@ -67,7 +70,10 @@ public class Lager {
 
     public void add(int anzEier){
         ArrayList<Ei> eier = createEggs(anzEier);
+        this.aufkleber.add(new Aufkleber(eier.get(0).getLegedatum(), eier.get(0).getHaltbarkeitUnGekuehlt(),eier.get(0).getHaltbarkeitGekuehlt(), eier.size()));
 
+
+/* solange die eier noch nicht in die verschiedenen kartons sortiert werden sollen wird diese stelle noch nicht benötigt
         int loopcounter = 0;
         while (eier.size() > 0) {       //eier erstellen und in kartons einsortieren
 
@@ -107,6 +113,10 @@ public class Lager {
         for (int i = lagerVolleKartons.size()-1; loopcounter >= 0; i--, loopcounter--){   //Etiketten ausdrucken
             drucker.print(lagerVolleKartons.get(i).getAufkleber());
         }
+
+
+         */
+
 
 
 

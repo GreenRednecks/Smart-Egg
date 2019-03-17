@@ -48,21 +48,32 @@ public class HuenherStall {
         HuenherStall huenerstall = new HuenherStall();
         ArrayList<Huhn> huehner = new ArrayList();
         Lager lager = new Lager();
-//      Drucker drucker = new Drucker();
+        Drucker drucker = new Drucker();
+
+
+        lager.add(33);
+
+        drucker.print(lager.getAufkleber().get(lager.getAufkleber().size()-1));
+
+
+        /*
 
         for (int i = 0; i < 30; i++){  //das ist nur zu testzwecken hier, wird später durch ein eingabe terminal ausgetauscht
                     huehner.add(new Bielefelder());
                     huehner.add(new Hahn());
                     huehner.add(new Bielefelder());
         }
+*/
+//        lager.addLeereKartons6(10);
+//        lager.addLeereKartons10(10);
 
-        lager.addLeereKartons6(10);
-        lager.addLeereKartons10(10);
-        lager.add(13);
 
-        System.out.println("Noch " + lager.getAnzLeereKartons6()+ " 6er Kartons vorhanden");
-        System.out.println("Noch " + lager.getAnzLeereKartons10()+ " 10er Kartons vorhanden");
-        System.out.println(lager.getAnzVolleKartons()+ " volle Kartons sind im Lager");
+
+//        System.out.println("test: "+ lager.getAufkleber().get(lager.getAufkleber().size()-1));
+
+//        System.out.println("Noch " + lager.getAnzLeereKartons6()+ " 6er Kartons vorhanden");
+//        System.out.println("Noch " + lager.getAnzLeereKartons10()+ " 10er Kartons vorhanden");
+//        System.out.println(lager.getAnzVolleKartons()+ " volle Kartons sind im Lager");
 
 
 //        huenerstall.getFuttermenge(huehner);

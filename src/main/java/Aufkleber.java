@@ -12,7 +12,7 @@ public class Aufkleber {
 
     private String legedatumAlsString,ablaufdatumGekuehltAlsString, ablaufdatumUngekuehltAlsString;
 
-    public Aufkleber(Date legedatum, Date ablaufdatumUngekuehlt, Date ablaufdatumGekuehlt, UUID kartonID, int anzEier, int anzEierplaetze) {
+    public Aufkleber(Date legedatum, Date ablaufdatumUngekuehlt, Date ablaufdatumGekuehlt, UUID kartonID, int anzEier, int anzEierplaetze) { //aufkleber für eierkartons
         DateFormat formatter = new SimpleDateFormat( "dd.MM.yyyy HH:mm" );
         legedatumAlsString = formatter.format(legedatum);
         ablaufdatumGekuehltAlsString = formatter.format(ablaufdatumGekuehlt);
@@ -20,12 +20,27 @@ public class Aufkleber {
         this.kartonID = kartonID;
         this. anzEier = anzEier;
         this.anzEierplaetze = anzEierplaetze;
-        generatePrintText();
+        generatePrintTextBox();
     }
 
+    public Aufkleber(Date legedatum, Date ablaufdatumUngekuehlt, Date ablaufdatumGekuehlt, int anzEier){     //aufkleber für eier
+        DateFormat formatter = new SimpleDateFormat( "dd.MM.yyyy HH:mm" );
+        legedatumAlsString = formatter.format(legedatum);
+        ablaufdatumGekuehltAlsString = formatter.format(ablaufdatumGekuehlt);
+        ablaufdatumUngekuehltAlsString = formatter.format(ablaufdatumUngekuehlt);
+        this. anzEier = anzEier;
+        generatePrintTextEgg();
+    }
 
-    private void generatePrintText(){
+    private void generatePrintTextBox(){
         drucktext = "Legedatum: "+ legedatumAlsString + "\n" + "Haltbar ungekühlt: " + ablaufdatumUngekuehltAlsString+"\n" + "Haltbar gekühlt: "+ ablaufdatumGekuehltAlsString+"\n"+ "Enthaltene Eier: "+anzEier+ "/" +anzEierplaetze+"\n"+ "ID: "+ kartonID.toString();
+
+//        drucktext = String.format("Diese Eier wurden exklusiv von unseren Hühnern am %s gelegt\n " +
+//                "und erfreut sich über einen Verbrauch, ungtekühlt bis zum %s.\n " +
+//                "Wenn du die Güte hast die Eier in den Kühlschrank zu legen, dann hast du sogar bis zum %s Zeit sie zu verbrauchen.\n Dein Karton hat die ID ", legedatumAlsString, ablaufdatumUngekuehltAlsString, ablaufdatumGekuehltAlsString);
+    }
+    private void generatePrintTextEgg(){
+        drucktext = "Heute wurden "+ this.anzEier + " gelegt\n"+"Legedatum: "+ legedatumAlsString + "\n" + "Haltbar ungekühlt: " + ablaufdatumUngekuehltAlsString+"\n" + "Haltbar gekühlt: "+ ablaufdatumGekuehltAlsString+"\n";
 
 //        drucktext = String.format("Diese Eier wurden exklusiv von unseren Hühnern am %s gelegt\n " +
 //                "und erfreut sich über einen Verbrauch, ungtekühlt bis zum %s.\n " +
