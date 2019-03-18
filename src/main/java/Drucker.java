@@ -1,6 +1,8 @@
 import com.google.zxing.WriterException;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Drucker {
 
@@ -29,6 +31,37 @@ public class Drucker {
         System.out.println("--------------------------------------------------------------");
 //        generateQR(aufkleber);
     }
+    public void printOnPrinter(Aufkleber aufkleber) {
+
+        String printText = "----------------\n"+aufkleber.getDrucktext()+"\n"+"----------------"+"\n "+"\n ";
+
+        String[] commands = printText.split("\n");
+//        System.out.println("--------------------------------------------------------------");
+//        System.out.println(aufkleber.getDrucktext());
+//        System.out.println("--------------------------------------------------------------");
+//        generateQR(aufkleber);
+
+        String tmp;
+        String s = new String();
+        Process p;
+        try {
+            p = Runtime.getRuntime().exec(new String[]{"bash", "-c", "stty -F /dev/serial0 19200"});
+            for (String command: commands){
+                p = Runtime.getRuntime().exec(new String[]{"bash", "-c", "echo -e "+ command+" > /dev/serial0"});
+            }
+//            BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+////            while ((tmp = br.readLine()) != null)
+////                System.out.println("[LINE]: " + tmp);
+////            s += tmp + "\n";
+////            p.waitFor();
+////            System.out.println ("[EXIT]: " + p.exitValue());
+            p.destroy();
+        } catch (Exception e) {}
+
+
+    }
+
+
 
     private void generateQR(Aufkleber aufkleber) {
         try {

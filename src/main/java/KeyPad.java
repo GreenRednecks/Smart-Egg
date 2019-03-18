@@ -125,11 +125,12 @@ public class KeyPad {
             if (theInput.isLow()) {
                 theCol = myO;
                 checkPins();
-                try {
-                    Thread.sleep(200);
-                } catch (InterruptedException e) {
-                }
+//                try {
+//                    Thread.sleep(200);
+//                } catch (InterruptedException e) {
+//                }
                 break;
+//                findOutput();
             }
         }
 
@@ -137,6 +138,10 @@ public class KeyPad {
             myTheOutput.low();
         }
     }
+
+//    private void SetOutputToLow(){
+//
+//    }
 
     /**
      * Check pins.
@@ -209,7 +214,7 @@ public class KeyPad {
 
     private void notifyListeners(Object object, String property, char oldValue,
                                  char newValue) {
-        System.out.println("der neue wert ist: "+ newValue);
+//        System.out.println("der neue wert ist: "+ newValue);
 
         for (PropertyChangeListener name : listener) {
             name.propertyChange(new PropertyChangeEvent(this, property,
