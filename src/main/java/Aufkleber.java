@@ -40,7 +40,7 @@ public class Aufkleber {
 //                "Wenn du die Güte hast die Eier in den Kühlschrank zu legen, dann hast du sogar bis zum %s Zeit sie zu verbrauchen.\n Dein Karton hat die ID ", legedatumAlsString, ablaufdatumUngekuehltAlsString, ablaufdatumGekuehltAlsString);
     }
     private void generatePrintTextEgg(){
-        drucktext = "Heute wurden "+ this.anzEier + " gelegt\n"+"Legedatum: "+ legedatumAlsString + "\n" + "Haltbar ungekuehlt: " + ablaufdatumUngekuehltAlsString+"\n" + "Haltbar gekuehlt: "+ ablaufdatumGekuehltAlsString+"\n";
+        drucktext = "Heute wurden "+ this.anzEier + " Eier gelegt\n"+"Legedatum: "+ legedatumAlsString + "\n" + "Haltbar ungekuehlt: " + ablaufdatumUngekuehltAlsString+"\n" + "Haltbar gekuehlt: "+ ablaufdatumGekuehltAlsString;
 
 //        drucktext = String.format("Diese Eier wurden exklusiv von unseren Hühnern am %s gelegt\n " +
 //                "und erfreut sich über einen Verbrauch, ungtekühlt bis zum %s.\n " +

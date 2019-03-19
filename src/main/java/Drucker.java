@@ -33,13 +33,16 @@ public class Drucker {
     }
     public void printOnPrinter(Aufkleber aufkleber) {
 
-        String printText = "----------------\n"+aufkleber.getDrucktext()+"\n"+"----------------"+"\n "+"\n ";
+        String printText = "----------------\n"+aufkleber.getDrucktext()+"\n"+"----------------"+"\n "+"\n "+"\n ";
 
         String[] commands = printText.split("\n");
-//        System.out.println("--------------------------------------------------------------");
-//        System.out.println(aufkleber.getDrucktext());
-//        System.out.println("--------------------------------------------------------------");
-//        generateQR(aufkleber);
+
+//        for (String command: commands){
+//            System.out.println(command);
+//        }
+
+
+
 
         String tmp;
         String s = new String();
@@ -47,6 +50,7 @@ public class Drucker {
         try {
             p = Runtime.getRuntime().exec(new String[]{"bash", "-c", "stty -F /dev/serial0 19200"});
             for (String command: commands){
+                Thread.sleep(100);
                 p = Runtime.getRuntime().exec(new String[]{"bash", "-c", "echo -e "+ command+" > /dev/serial0"});
             }
 //            BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
