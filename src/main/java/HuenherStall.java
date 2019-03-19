@@ -15,6 +15,7 @@ public class HuenherStall {
     final Drucker drucker = new Drucker();
     //initialize Keypad
     KeyPad keypad = new KeyPad();
+    Display display = new Display();
 
     final String[] input = {""};
 
