@@ -19,6 +19,8 @@ public class HuenherStall {
 
     final String[] input = {""};
 
+    boolean stateEntering = false;
+    boolean statePrinting = false;
 
     public HuenherStall(){
         init();
@@ -31,62 +33,137 @@ public class HuenherStall {
             public void propertyChange(PropertyChangeEvent evt) {
                 switch ((char)evt.getNewValue()){
                     case '0':
-                        input[0] += "0";
-                        System.out.println("0");
+                        if(stateEntering){
+                            input[0] += "0";
+                            render(input[0], 1);
+                            System.out.println("0");
+                        }
                         break;
                     case '1':
-                        input[0] += "1";
-                        System.out.println("1");
+                        if(stateEntering){
+                            input[0] += "1";
+                            render(input[0], 1);
+                            System.out.println("1");
+                        }
                         break;
                     case '2':
-                        input[0] += "2";
-                        System.out.println("2");
+                        if(stateEntering){
+                            input[0] += "2";
+                            render(input[0], 1);
+                            System.out.println("2");
+                        }
                         break;
                     case '3':
-                        input[0] += "3";
-                        System.out.println("3");
+                        if(stateEntering){
+                            input[0] += "3";
+                            render(input[0], 1);
+                            System.out.println("3");
+                        }
                         break;
                     case '4':
-                        input[0] += "4";
-                        System.out.println("4");
+                        if(stateEntering){
+                            input[0] += "4";
+                            render(input[0], 1);
+                            System.out.println("4");
+                        }
                         break;
                     case '5':
-                        input[0] += "5";
-                        System.out.println("5");
+                        if(stateEntering){
+                            input[0] += "5";
+                            render(input[0], 1);
+                            System.out.println("5");
+                        }
                         break;
                     case '6':
-                        input[0] += "6";
-                        System.out.println("6");
+                        if(stateEntering){
+                            input[0] += "6";
+                            render(input[0], 1);
+                            System.out.println("6");
+                        }
                         break;
                     case '7':
-                        input[0] += "7";
-                        System.out.println("7");
+                        if(stateEntering){
+                            input[0] += "7";
+                            render(input[0], 1);
+                            System.out.println("7");
+                        }
                         break;
                     case '8':
-                        input[0] += "8";
-                        System.out.println("8");
+                        if(stateEntering){
+                            input[0] += "8";
+                            render(input[0], 1);
+                            System.out.println("8");
+                        }
                         break;
                     case '9':
-                        input[0] += "9";
-                        System.out.println("9");
+                        if(stateEntering){
+                            input[0] += "9";
+                            render(input[0], 1);
+                            System.out.println("9");
+                        }
                         break;
                     case 'A':
-                        input[0] = "";
-                        System.out.println("reset input");
+                        if(!statePrinting){
+                            stateEntering = true;
+                            input[0] = "";
+                            render("Eing. best.  (#)", 0);
+                            render(input[0], 1);
+                            System.out.println("reset input");
+                        }
                         break;
                     case 'B':
-                        drucker.printOnPrinter(lager.getAufkleber().get(lager.getAufkleber().size()-1));
-                        System.out.println("printing");
+                        if(!stateEntering){
+                            statePrinting = true;
+                            System.out.println("printing");
+                            render("Printing...", 0);
+                            render("", 1);
+                            drucker.printOnPrinter(lager.getAufkleber().get(lager.getAufkleber().size()-1));
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            resetDisplay();
+                            statePrinting = false;
+                        }
                         break;
                     case 'C':
-                        System.out.println("C");
+                        if(stateEntering && input[0].length() > 0){
+                            input[0] = input[0].substring(0, input[0].length()-1);
+                            render(input[0], 1);
+                            System.out.println("C");
+                        }
                         break;
                     case 'D':
                         System.out.println("D");
+                        resetDisplay();
                         break;
                     case '#':
-                        System.out.println("eingegeben: "+input[0]);
-                        lager.add(Integer.parseInt(input[0]));
+                        if(stateEntering){
+                            stateEntering = false;
+                            System.out.println("eingegeben: "+input[0]);
+                            if(input[0].length() <= 4){
+                                lager.add(Integer.parseInt(input[0]));
+                                render("Gespeichert!", 0);
+                                try {
+                                    Thread.sleep(1000);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            else{
+                                render("Falsche Eingabe!", 0);
+                                try {
+                                    Thread.sleep(1000);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            resetDisplay();
+                        }
+                        break;
+                    case '*':
+                        System.out.println("*");
                         break;
                     default:
                         break;
@@ -95,7 +172,18 @@ public class HuenherStall {
         });
     }
 
+    private void render(String s, int row){
+        if(!display.print(s, row)) resetDisplay();
+    }
 
+
+
+    private void resetDisplay(){
+        render("Eing. Eier   (A)", 0);
+        render("Bon drucken  (B)", 1);
+        stateEntering = false;
+        statePrinting = false;
+    }
 
 
     private double aktuelleEierMenge = 0;
