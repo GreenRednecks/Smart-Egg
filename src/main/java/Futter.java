@@ -1,4 +1,4 @@
-public class Futter {
+public abstract class Futter {
 
     private  double vorrat;
 

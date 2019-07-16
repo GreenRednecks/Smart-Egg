@@ -14,7 +14,6 @@ public class Bielefelder extends Henne {
         return 0.6; //600 gramm legemehl
     }
 
-    @Override
     public double getMaxEier() {
         return super.getLegeleistung();
     }
