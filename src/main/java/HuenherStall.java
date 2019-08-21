@@ -28,6 +28,10 @@ public class HuenherStall {
 
 
     private void init(){
+
+        //read from memory
+
+
         keypad.addChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
